@@ -1,4 +1,4 @@
-import {For, If, Component, View, bootstrap} from "angular2/angular2";
+import {Attribute, For, If, Component, View, bootstrap} from "angular2/angular2";
 
 
 // PART TWO
@@ -18,6 +18,10 @@ import {For, If, Component, View, bootstrap} from "angular2/angular2";
 })
 class Notepad{
     note = "I'm a property on the notepad";
+
+    constructor(@Attribute('owner') owner){
+        console.log(owner);
+    }
 }
 
 
@@ -30,8 +34,7 @@ class Notepad{
 
         <input type="text" #input (keyup)/>
 
-        <notepad #notepad [note]="input.value"></notepad>
-        {{notepad.note}}
+        <notepad owner="Derrick" #notepad [note]="input.value"></notepad>
 
         <hr>
 
