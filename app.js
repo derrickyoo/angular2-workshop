@@ -10,10 +10,14 @@ import {Donut} from 'donut';
     template: `
         <div>
             <h1>Hello Ng-Vegas</h1>
-            <donut>This content is displayed by adding <code> content HTML element to the <strong>donut</strong> component template.</code></donut>
+            <donut (open)="onOpen()">This content is displayed by adding <code> content HTML element to the <strong>donut</strong> component template.</code></donut>
         </div>
     `
 })
-class VegasApp{}
+class VegasApp{
+    onOpen() {
+        alert('DOH-DOH-Donuts from app!');
+    }
+}
 
 bootstrap(VegasApp);
