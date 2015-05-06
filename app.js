@@ -12,7 +12,7 @@ import {Donut} from 'donut';
             <h1>Hello Ng-Vegas</h1>
             <donut (open)="onOpen()">This content is displayed by adding <code> content HTML element to the <strong>donut</strong> component template.</code></donut>
             <ul>
-                <li *for="#note of notes">{{note}}</li>
+                <li *for="#note of notes" (click)="onNoteClick(note)">{{note}}</li>
             </ul>
             <div *if="notes.length > 0">You have notes!</div>
         </div>
@@ -24,6 +24,10 @@ class VegasApp{
     onOpen() {
         console.log('DOH-DOH-Donuts from app!');
     }
+
+    onNoteClick(value) {
+        console.log(value);
+    } 
 }
 
 bootstrap(VegasApp);
