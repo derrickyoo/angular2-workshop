@@ -7,6 +7,11 @@ import {Component, View, bootstrap} from "angular2/angular2";
 @View({
     templateUrl: 'donut.html'
 })
-class Donut{}
+class Donut{
+
+    onClick() {
+        alert('DOH-DOH-Donuts!');
+    }
+}
 
 export {Donut}
