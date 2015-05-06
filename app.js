@@ -1,17 +1,24 @@
 import {Attribute, For, If, Component, View, bootstrap} from "angular2/angular2";
-
+import {Inject} from "angular2/di";
 
 // PART TWO
+class NotepadData{
+    header = "I'm a notepad header";
+}
+
+
 @Component({
     selector: "notepad",
     properties: {
         'note': 'note'
-    }
+    },
+    // Specifying the list of things that can be injected
+    injectables: [NotepadData]
 })
 @View({
     template: `
         <div>
-            <h2>I am a notepad!</h2>
+            <h2>{{ notepadHeader }}</h2>
             {{ note }}
         </div>
     `
@@ -19,8 +26,11 @@ import {Attribute, For, If, Component, View, bootstrap} from "angular2/angular2"
 class Notepad{
     note = "I'm a property on the notepad";
 
-    constructor(@Attribute('owner') owner){
+    constructor(@Attribute('owner') owner, @Inject(NotepadData) notepadData){
         console.log(owner);
+        console.log(notepadData);
+
+        this.notepadHeader = notepadData.header
     }
 }
 
